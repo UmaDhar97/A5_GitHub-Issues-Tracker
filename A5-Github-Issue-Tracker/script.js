@@ -16,7 +16,8 @@ setActiveTab("all")
 
 function displayIssues(data){
 const container = document.getElementById("issueContainer")
-container.innerHTML = ""data.forEach(issue => {
+container.innerHTML = ""
+data.forEach(issue => {
 const border = issue.status === "open"
 ? "border-green-500": "border-purple-500"
 
@@ -74,8 +75,8 @@ ${new Date(issue.createdAt).toLocaleDateString()}
 </p>
 
 <p>
-Assign:
-<span class="font-medium">${issue.assign || "None"}</span>
+Assignee:
+<span class="font-medium">${issue.assignee || "None"}</span>
 </p>
 
 <p class="text-xs text-gray-500">
@@ -149,6 +150,7 @@ if(tab === "closed")
 document.getElementById("tabClosed").classList.add("btn-primary")
 
 }
+
 // OPEN ISSUE MODAL
 
 async function openModal(id){
@@ -167,9 +169,6 @@ ${label}
 document.getElementById("modalContent").innerHTML = `
 <div class="space-y-5">
 
-
-<!-- TITLE + STATUS -->
-
 <div class="flex items-center gap-2">
 
 <img src="${issue.status === "open"
@@ -184,12 +183,9 @@ ${issue.title}
 
 </div>
 
-
-<!-- DESCRIPTION -->
 <p class="text-gray-600">
 ${issue.description}
 </p>
-<!-- LABELS -->
 
 <div class="flex flex-wrap gap-2">
 ${labelsHTML}
@@ -197,7 +193,7 @@ ${labelsHTML}
 
 
 <hr>
-<!-- META INFO -->
+
 
 <div class="grid grid-cols-2 gap-6 text-sm"><div>
 <p class="text-gray-400 text-xs">Author</p>
@@ -236,3 +232,9 @@ ${labelsHTML}
 `
 document.getElementById("issueModal").showModal()
 }
+function logout(){
+localStorage.removeItem("isLoggedIn")
+window.location.href = "signin.html"
+}
+
+loadIssues()
