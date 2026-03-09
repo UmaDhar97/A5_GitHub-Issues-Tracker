@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>GitHub Issues Tracker</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://cdn.jsdelivr.net/npm/daisyui@4.12.2/dist/full.min.css" rel="stylesheet">
+</head>
+
+<body class="flex items-center justify-center h-screen bg-gray-100">
+
+<div class="bg-white p-10 rounded-xl shadow w-96 text-center">
+<img src="assets/github-logo.png" class="mx-auto mb-4 w-16">
+<h1 class="text-3xl font-bold mb-2">
+GitHub Issues Tracker</h1>
+
+<p class="text-gray-500 mb-6">
+Sign in to manage your issues </p>
+
+<input id="username"
+type="text"
+placeholder="Username"
+class="input input-bordered w-full mb-4">
+
+<input id="password"
+type="password"
+placeholder="Password"
+class="input input-bordered w-full mb-4">
+
+<button onclick="login()"
+class="btn btn-primary w-full">
+Sign In
+</button>
+
+<p class="text-sm mt-4 text-gray-500">
+Demo Credentials: <br>
+Username: admin <br>
+Password: admin123
+</p>
+</div>
+
+<script>
+function login(){
+const username =document.getElementById("username").value
+const password =document.getElementById("password").value
+if(username==="admin" && password==="admin123"){localStorage.setItem("isLoggedIn","true")
+window.location.href="dashboard.html"}
+else{
+    alert("Invalid Credentials")
+}
+}
+
+</script>
+</body>
+</html>
