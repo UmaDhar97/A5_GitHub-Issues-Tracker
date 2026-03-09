@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Issue Tracker Dashboard</title>
+
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://cdn.jsdelivr.net/npm/daisyui@4.12.2/dist/full.min.css" rel="stylesheet">
+
+</head>
+<body class="bg-gray-100">
+<script>
+
+if(localStorage.getItem("isLoggedIn") !== "true"){
+window.location.href = "signin.html"
+}
+
+</script>
+
+<!-- NAVBAR -->
+
+<div class="navbar bg-white shadow px-10">
+<div class="flex-1 text-xl font-bold">All Issues</div>
+
+<div class="flex gap-3">
+<input id="searchInput"
+class="input input-bordered w-60"
+placeholder="Search issue">
+
+<button onclick="searchIssue()" class="btn btn-primary">Search</button>
+<button onclick="logout()" class="btn btn-error">Logout</button>
+</div>
+</div>
+
+<!-- MAIN CONTAINER -->
+
+<div class="max-w-7xl mx-auto mt-8">
+
+<!-- buttons -->
+
+<div class="flex gap-4 mb-6">
+
+<button id="tabAll"
+onclick="loadIssues()"
+class="btn tab-btn btn-primary border border-black">All
+</button>
+
+<button id="tabOpen"
+onclick="filterIssues('open')"
+class="btn tab-btn border border-black">Open
+</button>
+
+<button id="tabClosed"
+onclick="filterIssues('closed')"
+class="btn tab-btn border border-black">Closed
+</button>
+</div>
+
+<!-- issues summary -->
+
+<div class="flex justify-between items-center bg-white p-6 rounded-lg shadow mb-8">
+
+<div class="flex items-center gap-3">
+<img src="assets/Aperture.png">
+<h2 class="text-xl font-bold">Total Issues
+</h2>
+
+<span id="totalCount" class="text-2xl font-bold">0</span>
+
+</div>
+
+<div class="flex gap-6">
+<div class="flex items-center gap-2">
+<div class="w-4 h-4 bg-green-500 rounded-full"></div>
+<span>Open</span>
+</div>
+
+<div class="flex items-center gap-2">
+<div class="w-4 h-4 bg-purple-500 rounded-full"></div>
+
+<span>Closed</span>
+
+</div>
+ </div>
+  </div>
